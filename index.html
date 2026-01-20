@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
+    <link rel="icon" type="image/png"  href="./img/logo.webp">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hara Ceylon | Premium Sri Lankan Tea & Coffee</title>
@@ -309,6 +310,7 @@
         <footer class="bg-black text-white py-12 border-t border-gray-900">
             <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
                 <div class="mb-4 md:mb-0 text-center md:text-left">
+                      <img src="./img/logo.webp" alt="Hara Ceylon" class="h-16 w-auto mx-auto mb-6 opacity-80 grayscale hover:grayscale-0 transition-all">
                     <h3 class="text-2xl font-serif font-bold text-white mb-2">HARA CEYLON</h3>
                     <p class="text-gray-500 text-sm">© 2026 Hara Ceylon Ltd. All rights reserved.</p>
                     <p class="text-gray-600 text-xs mt-2">Developed by <a href="https://www.facebook.com/websynic" target="_blank" class="hover:text-brand-gold transition-colors">Websynic Digital Solutions</a></p>
@@ -401,7 +403,7 @@
             mounted() {
                 AOS.init({ once: true, offset: 100, duration: 800 });
                 window.addEventListener('scroll', this.handleScroll);
-                setTimeout(() => { this.loading = false; }, 3000);
+                setTimeout(() => { this.loading = false; }, 1500);
                 setInterval(() => { this.currentHeroIndex = (this.currentHeroIndex + 1) % this.heroImages.length; }, 5000);
             },
             updated() {

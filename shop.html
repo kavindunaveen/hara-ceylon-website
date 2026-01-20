@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
+    <link rel="icon" type="image/png" href="./img/logo.webp">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shop Collection | Hara Ceylon</title>
@@ -207,8 +208,8 @@
                     products: [
                         { id: 1, category: 'tea', title: 'Royal Ceylon Black', desc: 'Handpicked from the lush highlands.', image: 'img/product1.webp' },
                         { id: 2, category: 'tea', title: 'Highland Green Tea', desc: 'Vibrant green leaves curated to bring you unmatched freshness.', image: 'img/product2.webp' },
-                        { id: 3, category: 'tea', title: 'Hara Signature Gold', desc: 'A premium golden leaf tea blend.', image: 'img/product3.webp' },
-                        { id: 4, category: 'tea', title: 'Mountain White Tea', desc: 'Delicate white tea from the misty mountains.', image: 'img/product4.webp' }
+                        { id: 3, category: 'coffee', title: 'Dark Roasted Coffee', desc: 'A premium golden leaf tea blend.', image: 'img/product3.webp' },
+                        { id: 4, category: 'coffee', title: 'Medium Roasted Coffee', desc: 'Delicate white tea from the misty mountains.', image: 'img/product4.webp' }
                     ]
                 }
             },
@@ -235,7 +236,7 @@
             mounted() {
                 AOS.init({ once: true, offset: 50, duration: 800 });
                 window.addEventListener('scroll', this.handleScroll);
-                setTimeout(() => { this.loading = false; }, 3000);
+                setTimeout(() => { this.loading = false; }, 1500);
             },
             updated() {
                 if (typeof VanillaTilt !== 'undefined') {
