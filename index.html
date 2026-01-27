@@ -48,7 +48,6 @@
     </script>
     
     <style>
-        .map-dark { filter: grayscale(100%) invert(92%) contrast(83%); mix-blend-mode: hard-light; }
         .scroll-progress { position: fixed; top: 0; left: 0; height: 4px; background: #D4AF37; z-index: 99999; width: 0%; transition: width 0.1s ease-out; }
         
         .loader-wrapper {
@@ -79,9 +78,7 @@
         .slide-enter-active, .slide-leave-active { transition: opacity 1.5s ease-in-out; }
         .slide-enter-from, .slide-leave-to { opacity: 0; }
         .glass-dark { background: rgba(15, 43, 29, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
-        .contact-card { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(5px); border-left: 4px solid #D4AF37; }
         
-        /* Fixed height for description to keep buttons aligned */
         .desc-container { min-height: 4.5rem; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
 
         .process-line::before {
@@ -89,6 +86,39 @@
             background: #e5e7eb; z-index: 0;
         }
         @media (max-width: 768px) { .process-line::before { display: none; } }
+        
+        /* New Design Styles for Contact and Footer */
+        .luxury-card {
+            background: linear-gradient(145deg, rgba(20, 50, 35, 0.9), rgba(10, 30, 20, 0.95));
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+        .contact-input {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s ease;
+        }
+        .contact-input:focus {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: #D4AF37;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.1);
+        }
+        .footer-link-hover {
+            position: relative;
+        }
+        .footer-link-hover::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -2px;
+            left: 0;
+            background-color: #D4AF37;
+            transition: width 0.3s ease;
+        }
+        .footer-link-hover:hover::after {
+            width: 100%;
+        }
     </style>
 </head>
 <body class="font-sans text-gray-800 bg-gray-50 overflow-x-hidden selection:bg-brand-gold selection:text-white">
@@ -235,46 +265,117 @@
             </div>
         </section>
 
-        <section id="contact" class="bg-brand-dark relative overflow-hidden">
-            <div class="grid grid-cols-1 lg:grid-cols-2 h-full">
-                <div class="relative min-h-[400px] lg:h-auto w-full">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2471.849603837965!2d-0.5367375239967781!3d51.87978018742848!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48764835848525b1%3A0x6b2b5247c4187212!2s24%20Watling%20Gardens%2C%20Dunstable%20LU6%203FD%2C%20UK!5e0!3m2!1sen!2slk!4v1705300000000!5m2!1sen!2slk" class="absolute inset-0 w-full h-full border-0 map-dark" allowfullscreen="" loading="lazy"></iframe>
-                    <div class="absolute bottom-6 left-6 right-6 md:left-12 md:right-auto md:w-80 contact-card p-6 rounded-lg shadow-2xl" data-aos="fade-up">
-                        <h4 class="text-brand-green font-bold text-lg mb-2">UK Headquarters</h4>
-                        <p class="text-sm text-gray-700 leading-relaxed">24 Watling Gardens, Southfield Road<br>Dunstable, LU6 3FD<br>UNITED KINGDOM</p>
-                        <div class="mt-4 pt-4 border-t border-gray-200 flex gap-4">
-                            <a href="mailto:info@haraceylon.com" class="text-brand-gold hover:text-brand-green"><i class="fas fa-envelope text-xl"></i></a>
-                            <a href="https://wa.me/447438413454" class="text-brand-gold hover:text-brand-green"><i class="fab fa-whatsapp text-xl"></i></a>
+        <!-- ENHANCED CONTACT SECTION -->
+        <section id="contact" class="bg-brand-dark relative py-24 md:py-32 overflow-hidden">
+            <!-- Decorative Elements -->
+            <div class="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-96 h-96 bg-brand-gold opacity-5 blur-[120px] rounded-full"></div>
+            <div class="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/2 w-96 h-96 bg-brand-green opacity-10 blur-[120px] rounded-full"></div>
+
+            <div class="max-w-7xl mx-auto px-6 relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-5 gap-16 items-center">
+                    
+                    <!-- Left: Content & Branding -->
+                    <div class="lg:col-span-2 text-center lg:text-left" data-aos="fade-right">
+                        <span class="text-brand-gold font-bold tracking-[0.3em] uppercase text-xs mb-4 block">Connections</span>
+                        <h2 class="text-white text-4xl md:text-5xl font-serif font-bold mb-6 leading-tight">Begin Your <br><span class="text-brand-gold italic">Pure Journey</span> With Us</h2>
+                        <p class="text-gray-400 text-lg mb-10 leading-relaxed font-light">Whether you're looking for wholesale opportunities or a single premium cup, we're here to share the essence of Sri Lanka with you.</p>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-center justify-center lg:justify-start gap-5 group">
+                                <div class="w-12 h-12 rounded-full border border-brand-gold/30 flex items-center justify-center text-brand-gold group-hover:bg-brand-gold group-hover:text-white transition-all duration-300">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <span class="text-white/80 font-medium tracking-wide">info@haraceylon.com</span>
+                            </div>
+                            <div class="flex items-center justify-center lg:justify-start gap-5 group">
+                                <div class="w-12 h-12 rounded-full border border-brand-gold/30 flex items-center justify-center text-brand-gold group-hover:bg-brand-gold group-hover:text-white transition-all duration-300">
+                                    <i class="fab fa-whatsapp text-lg"></i>
+                                </div>
+                                <span class="text-white/80 font-medium tracking-wide">+44 7438 413454</span>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="p-10 md:p-16 flex flex-col justify-center">
-                    <div data-aos="fade-left">
-                        <span class="text-brand-gold font-bold tracking-widest uppercase text-sm mb-2 block">Get in Touch</span>
-                        <h2 class="text-white text-4xl font-serif font-bold mb-6">Let's Discuss</h2>
-                        <form @submit.prevent="submitForm" class="space-y-6">
-                            <div><input type="text" class="w-full px-6 py-4 bg-white/5 border border-gray-600 rounded-xl text-white focus:outline-none focus:border-brand-gold transition-all placeholder-gray-500" placeholder="Your Name"></div>
-                            <div><input type="email" class="w-full px-6 py-4 bg-white/5 border border-gray-600 rounded-xl text-white focus:outline-none focus:border-brand-gold transition-all placeholder-gray-500" placeholder="Email Address"></div>
-                            <div><textarea rows="4" class="w-full px-6 py-4 bg-white/5 border border-gray-600 rounded-xl text-white focus:outline-none focus:border-brand-gold transition-all placeholder-gray-500" placeholder="How can we help?"></textarea></div>
-                            <button type="submit" class="w-full bg-brand-gold text-white py-4 rounded-xl font-bold text-lg hover:bg-white hover:text-brand-dark transition-all">Send Message</button>
-                        </form>
+                    <!-- Right: Enhanced Form Card -->
+                    <div class="lg:col-span-3" data-aos="fade-left">
+                        <div class="luxury-card p-8 md:p-12 rounded-[2rem]">
+                            <form @submit.prevent="submitForm" class="space-y-6">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div class="space-y-2">
+                                        <label class="text-brand-gold/60 text-[10px] uppercase font-bold tracking-widest ml-1">Full Name</label>
+                                        <input type="text" class="contact-input w-full px-6 py-4 rounded-xl text-white outline-none placeholder-gray-600" placeholder="E.g. John Doe">
+                                    </div>
+                                    <div class="space-y-2">
+                                        <label class="text-brand-gold/60 text-[10px] uppercase font-bold tracking-widest ml-1">Email Address</label>
+                                        <input type="email" class="contact-input w-full px-6 py-4 rounded-xl text-white outline-none placeholder-gray-600" placeholder="E.g. john@example.com">
+                                    </div>
+                                </div>
+                                <div class="space-y-2">
+                                    <label class="text-brand-gold/60 text-[10px] uppercase font-bold tracking-widest ml-1">Your Message</label>
+                                    <textarea rows="4" class="contact-input w-full px-6 py-4 rounded-xl text-white outline-none placeholder-gray-600 resize-none" placeholder="Share your inquiry or thoughts..."></textarea>
+                                </div>
+                                <button type="submit" class="w-full bg-brand-gold hover:bg-white hover:text-brand-dark text-white py-5 rounded-xl font-bold text-sm uppercase tracking-[0.2em] transition-all duration-500 shadow-[0_10px_30px_rgba(212,175,55,0.2)]">
+                                    Send Inquiry
+                                </button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
         
-        <footer class="bg-black text-white py-12 border-t border-gray-900">
-            <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-center md:text-left">
-                <div class="mb-4 md:mb-0">
-                    <img src="./img/logo.webp" alt="Hara Ceylon" class="h-16 w-auto mx-auto md:mx-0 mb-4 opacity-80">
-                    <p class="text-gray-500 text-sm">© 2026 Hara Ceylon Ltd. All rights reserved.</p>
-                    <p class="text-gray-600 text-xs mt-2">Developed by <a href="https://www.facebook.com/websynic" target="_blank" class="hover:text-brand-gold transition-colors">Websynic Digital Solutions</a></p>
+        <!-- ENHANCED FOOTER SECTION -->
+        <footer class="bg-[#05150d] text-white pt-20 pb-10 border-t border-white/5">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-20">
+                    
+                    <!-- Branding & About -->
+                    <div class="md:col-span-2 text-center md:text-left">
+                        <img src="./img/logo.webp" alt="Hara Ceylon" class="h-24 w-auto mb-8 opacity-90 transition-transform hover:scale-105 duration-500 mx-auto md:mx-0">
+                        <p class="text-gray-500 leading-relaxed max-w-sm font-light italic mx-auto md:mx-0">
+                            "Cultivating wellness and tradition, from the misty hills of Sri Lanka straight to your cherished ritual."
+                        </p>
+                    </div>
+
+                    <!-- Quick Links -->
+                    <div class="text-center md:text-left">
+                        <h4 class="text-brand-gold text-xs font-bold uppercase tracking-[0.3em] mb-8">Navigation</h4>
+                        <ul class="space-y-4 text-sm font-medium text-gray-400">
+                            <li><a href="#home" class="footer-link-hover">Home</a></li>
+                            <li><a href="#about" class="footer-link-hover">Our Story</a></li>
+                            <li><a href="#shop" class="footer-link-hover">Collection</a></li>
+                            <li><a href="shop.html" class="footer-link-hover">Full Store</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Social Presence -->
+                    <div class="text-center md:text-left">
+                        <h4 class="text-brand-gold text-xs font-bold uppercase tracking-[0.3em] mb-8">Social Connect</h4>
+                        <div class="flex gap-4 justify-center md:justify-start">
+                            <a href="#" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-gray-400 hover:text-brand-gold hover:border-brand-gold transition-all duration-300">
+                                <i class="fab fa-facebook-f text-sm"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-gray-400 hover:text-brand-gold hover:border-brand-gold transition-all duration-300">
+                                <i class="fab fa-instagram text-sm"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-gray-400 hover:text-brand-gold hover:border-brand-gold transition-all duration-300">
+                                <i class="fab fa-linkedin-in text-sm"></i>
+                            </a>
+                        </div>
+                        <p class="text-gray-600 text-[10px] mt-8 tracking-widest uppercase font-bold">Follow Our Journey</p>
+                    </div>
                 </div>
-                <div class="flex space-x-6 mt-6 md:mt-0">
-                    <a href="#" class="text-gray-400 hover:text-brand-gold transition-colors"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="text-gray-400 hover:text-brand-gold transition-colors"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="text-gray-400 hover:text-brand-gold transition-colors"><i class="fab fa-linkedin-in"></i></a>
+
+                <!-- Copyright & Bottom Line -->
+                <div class="pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+                    <div class="flex flex-col md:flex-row items-center gap-2 text-center md:text-left">
+                        <span class="text-gray-500 text-xs">© 2026 Hara Ceylon Ltd. All rights reserved.</span>
+                        <span class="hidden md:inline text-gray-800">|</span>
+                        <span class="text-gray-600 text-[10px] uppercase tracking-wider">Premium Sri Lankan Heritage</span>
+                    </div>
+                    <div class="text-gray-600 text-[10px] uppercase tracking-tighter text-center md:text-right">
+                        Developed by <a href="https://www.facebook.com/websynic" target="_blank" class="text-brand-gold/60 hover:text-brand-gold transition-colors font-bold">Websynic Digital Solutions</a>
+                    </div>
                 </div>
             </div>
         </footer>
@@ -335,13 +436,17 @@
                 submitForm() { alert('Thank you. We will contact you shortly.'); },
                 handleScroll() {
                     this.isScrolled = window.scrollY > 50;
-                    this.scrollPercentage = Math.min((window.scrollY / (document.body.offsetHeight - window.innerHeight)) * 100, 100);
+                    let scrollTop = window.scrollY;
+                    let docHeight = document.body.offsetHeight;
+                    let winHeight = window.innerHeight;
+                    let scrollPercent = scrollTop / (docHeight - winHeight);
+                    this.scrollPercentage = Math.min(scrollPercent * 100, 100);
                 }
             },
             mounted() {
                 AOS.init({ once: true, offset: 100, duration: 800 });
                 window.addEventListener('scroll', this.handleScroll);
-                setTimeout(() => { this.loading = false; }, 1200);
+                setTimeout(() => { this.loading = false; }, 1500);
                 setInterval(() => { this.currentHeroIndex = (this.currentHeroIndex + 1) % this.heroImages.length; }, 5000);
             },
             updated() {
