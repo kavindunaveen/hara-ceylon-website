@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-    <link rel="icon" type="image/png"  href="./img/logo.webp">
+    <link rel="icon" type="image/png" href="./img/logo.webp">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hara Ceylon | Premium Sri Lankan Tea & Coffee</title>
@@ -23,10 +23,10 @@
                 extend: {
                     colors: {
                         brand: {
-                            dark: '#0f2b1d',    // Deep forest green
-                            green: '#2C5E1A',   // Leaf green
-                            gold: '#D4AF37',    // Luxury Gold
-                            light: '#f4f7f5',   // Off-white
+                            dark: '#0f2b1d',
+                            green: '#2C5E1A',
+                            gold: '#D4AF37',
+                            light: '#f4f7f5',
                         }
                     },
                     fontFamily: {
@@ -51,7 +51,6 @@
         .map-dark { filter: grayscale(100%) invert(92%) contrast(83%); mix-blend-mode: hard-light; }
         .scroll-progress { position: fixed; top: 0; left: 0; height: 4px; background: #D4AF37; z-index: 99999; width: 0%; transition: width 0.1s ease-out; }
         
-        /* LUXURY CSS LOADER */
         .loader-wrapper {
             position: fixed; inset: 0; background: #0f2b1d; z-index: 10000;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
@@ -82,6 +81,9 @@
         .glass-dark { background: rgba(15, 43, 29, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
         .contact-card { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(5px); border-left: 4px solid #D4AF37; }
         
+        /* Fixed height for description to keep buttons aligned */
+        .desc-container { min-height: 4.5rem; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+
         .process-line::before {
             content: ''; position: absolute; top: 2rem; left: 0; width: 100%; height: 2px;
             background: #e5e7eb; z-index: 0;
@@ -92,7 +94,6 @@
 <body class="font-sans text-gray-800 bg-gray-50 overflow-x-hidden selection:bg-brand-gold selection:text-white">
 
     <div id="app">
-        
         <div class="scroll-progress" :style="{ width: scrollPercentage + '%' }"></div>
 
         <div :class="{'hidden': !loading}" class="loader-wrapper">
@@ -109,7 +110,6 @@
 
         <nav :class="isScrolled ? 'glass-dark py-2' : 'bg-transparent py-8'" class="fixed w-full z-50 transition-all duration-500 ease-in-out">
             <div class="max-w-7xl mx-auto px-6">
-                
                 <div class="hidden md:grid grid-cols-3 items-center">
                     <div class="justify-self-start flex space-x-8">
                         <a v-for="item in navItems" :key="item.name" @click.prevent="scrollTo(item.link)" href="#" 
@@ -117,7 +117,6 @@
                             {{ item.name }}
                         </a>
                     </div>
-
                     <div class="justify-self-center">
                         <a href="#" class="block group">
                             <img src="./img/logo.webp" alt="Hara Ceylon" 
@@ -125,7 +124,6 @@
                                  class="w-auto object-contain transition-all duration-500 ease-in-out drop-shadow-xl">
                         </a>
                     </div>
-
                     <div class="justify-self-end">
                         <button @click="scrollTo('#contact')" class="bg-brand-gold text-white px-6 py-2 rounded-full font-bold text-xs uppercase tracking-wider hover:bg-white hover:text-brand-green transition-all shadow-lg">
                             Inquire Now
@@ -173,7 +171,7 @@
             <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                 <div class="relative" data-aos="fade-right">
                     <div class="grid grid-cols-2 gap-4">
-                        <img src="img/product1.webp" class="rounded-2xl shadow-xl w-full h-64 object-cover transform translate-y-8" alt="Tea Plantation">
+                        <img src="img/Green-tea1.png" class="rounded-2xl shadow-xl w-full h-64 object-cover transform translate-y-8" alt="Tea Plantation">
                         <img src="img/hero-bg.webp" class="rounded-2xl shadow-xl w-full h-64 object-cover" alt="Tea Leaves">
                     </div>
                     <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-brand-gold text-white p-6 rounded-full shadow-2xl w-32 h-32 flex flex-col justify-center items-center text-center border-4 border-white animate-float">
@@ -200,47 +198,6 @@
             </div>
         </section>
 
-        <section class="py-24 bg-brand-light relative">
-            <div class="max-w-7xl mx-auto px-6">
-                <div class="text-center mb-16" data-aos="fade-up">
-                    <span class="text-brand-gold font-bold uppercase text-sm tracking-widest">Our Process</span>
-                    <h2 class="text-4xl font-serif font-bold text-gray-900 mt-2">From Farm to Cup</h2>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-8 relative process-line">
-                    <div class="relative z-10 text-center" data-aos="fade-up" data-aos-delay="100">
-                        <div class="w-16 h-16 mx-auto bg-white border-4 border-brand-green rounded-full flex items-center justify-center text-brand-green text-2xl mb-4 shadow-lg"><i class="fas fa-leaf"></i></div>
-                        <h4 class="font-bold text-lg mb-2">Handpicked</h4>
-                        <p class="text-sm text-gray-500">Select two leaves and a bud, harvested with care from the highlands.</p>
-                    </div>
-                    <div class="relative z-10 text-center" data-aos="fade-up" data-aos-delay="200">
-                        <div class="w-16 h-16 mx-auto bg-white border-4 border-brand-green rounded-full flex items-center justify-center text-brand-green text-2xl mb-4 shadow-lg"><i class="fas fa-industry"></i></div>
-                        <h4 class="font-bold text-lg mb-2">Artisan Crafted</h4>
-                        <p class="text-sm text-gray-500">Processed using traditional methods to preserve authentic aroma.</p>
-                    </div>
-                    <div class="relative z-10 text-center" data-aos="fade-up" data-aos-delay="300">
-                        <div class="w-16 h-16 mx-auto bg-white border-4 border-brand-green rounded-full flex items-center justify-center text-brand-green text-2xl mb-4 shadow-lg"><i class="fas fa-clipboard-check"></i></div>
-                        <h4 class="font-bold text-lg mb-2">Quality Graded</h4>
-                        <p class="text-sm text-gray-500">Rigorously tested to ensure every sip meets global standards.</p>
-                    </div>
-                    <div class="relative z-10 text-center" data-aos="fade-up" data-aos-delay="400">
-                        <div class="w-16 h-16 mx-auto bg-white border-4 border-brand-green rounded-full flex items-center justify-center text-brand-green text-2xl mb-4 shadow-lg"><i class="fas fa-plane-departure"></i></div>
-                        <h4 class="font-bold text-lg mb-2">Global Export</h4>
-                        <p class="text-sm text-gray-500">Packaged fresh and shipped directly to your doorstep worldwide.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="py-16 bg-brand-dark text-white relative">
-            <div class="absolute inset-0 opacity-20" style="background-image: url('https://www.transparenttextures.com/patterns/wood-pattern.png');"></div>
-            <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center relative z-10">
-                <div data-aos="fade-up" data-aos-delay="0"><i class="fas fa-leaf text-4xl text-brand-gold mb-3"></i><h3 class="text-3xl font-bold">100%</h3><p class="text-gray-400 text-sm uppercase tracking-wider">Natural</p></div>
-                <div data-aos="fade-up" data-aos-delay="100"><i class="fas fa-users text-4xl text-brand-gold mb-3"></i><h3 class="text-3xl font-bold">50+</h3><p class="text-gray-400 text-sm uppercase tracking-wider">Farmers</p></div>
-                <div data-aos="fade-up" data-aos-delay="200"><i class="fas fa-globe-asia text-4xl text-brand-gold mb-3"></i><h3 class="text-3xl font-bold">Global</h3><p class="text-gray-400 text-sm uppercase tracking-wider">Export</p></div>
-                <div data-aos="fade-up" data-aos-delay="300"><i class="fas fa-award text-4xl text-brand-gold mb-3"></i><h3 class="text-3xl font-bold">Top</h3><p class="text-gray-400 text-sm uppercase tracking-wider">Quality</p></div>
-            </div>
-        </section>
-
         <section id="shop" class="py-24 bg-white">
             <div class="max-w-7xl mx-auto px-6">
                 <div class="text-center mb-16" data-aos="fade-in">
@@ -248,21 +205,21 @@
                     <h2 class="text-4xl font-serif font-bold text-gray-900 mt-2">Premium Selections</h2>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-                    <div v-for="product in products.slice(0, 4)" :key="product.id" 
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                    <div v-for="product in products" :key="product.id" 
                          class="tilt-card group bg-white rounded-2xl overflow-hidden border border-gray-100 relative shadow-sm" 
                          data-tilt data-tilt-max="15" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.3"
                          data-aos="fade-up">
                         
-                        <div class="h-64 overflow-hidden relative bg-white">
-                            <img :src="product.image" :alt="product.title" class="w-full h-full object-contain p-4 transition-transform duration-700 group-hover:scale-110">
-                            <div class="absolute top-4 left-4 bg-brand-gold text-white px-3 py-1 rounded text-xs font-bold uppercase tracking-wide shadow-sm">
+                        <div class="h-64 overflow-hidden relative bg-white flex items-center justify-center p-4">
+                            <img :src="product.image" :alt="product.title" loading="lazy" class="w-full h-full object-contain transition-transform duration-700 group-hover:scale-110">
+                            <div class="absolute top-4 left-4 bg-brand-gold text-white px-3 py-1 rounded text-[10px] font-bold uppercase tracking-wide shadow-sm">
                                 {{ product.category }}
                             </div>
                         </div>
-                        <div class="p-6 relative bg-white transform translate-z-10">
-                            <h3 class="font-serif text-xl font-bold text-gray-900 mb-2 truncate">{{ product.title }}</h3>
-                            <p class="text-gray-500 text-sm mb-6 line-clamp-2 h-10">{{ product.desc }}</p>
+                        <div class="p-6 relative bg-white border-t border-gray-50 transform translate-z-10">
+                            <h3 class="font-serif text-xl font-bold text-gray-900 mb-2 h-14 line-clamp-2 leading-tight">{{ product.title }}</h3>
+                            <p class="text-gray-500 text-sm mb-6 desc-container leading-relaxed">{{ product.desc }}</p>
                             <button @click="openInquiry(product)" class="w-full bg-gray-900 text-white py-3 rounded-lg font-bold text-sm hover:bg-brand-gold transition-colors flex justify-center items-center gap-2">
                                 <span>Inquire Now</span>
                             </button>
@@ -271,7 +228,7 @@
                 </div>
 
                 <div class="text-center" data-aos="fade-up">
-                    <a href="shop.html" class="inline-flex items-center gap-3 px-10 py-4 bg-brand-green text-white font-bold rounded-full shadow-xl hover:bg-green-800 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
+                    <a href="shop.html" class="inline-flex items-center gap-3 px-10 py-4 bg-brand-green text-white font-bold rounded-full shadow-xl hover:bg-green-800 transition-all duration-300">
                         View Full Collection <i class="fas fa-th-large"></i>
                     </a>
                 </div>
@@ -280,7 +237,7 @@
 
         <section id="contact" class="bg-brand-dark relative overflow-hidden">
             <div class="grid grid-cols-1 lg:grid-cols-2 h-full">
-                <div class="relative min-h-[500px] lg:h-auto w-full">
+                <div class="relative min-h-[400px] lg:h-auto w-full">
                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2471.849603837965!2d-0.5367375239967781!3d51.87978018742848!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48764835848525b1%3A0x6b2b5247c4187212!2s24%20Watling%20Gardens%2C%20Dunstable%20LU6%203FD%2C%20UK!5e0!3m2!1sen!2slk!4v1705300000000!5m2!1sen!2slk" class="absolute inset-0 w-full h-full border-0 map-dark" allowfullscreen="" loading="lazy"></iframe>
                     <div class="absolute bottom-6 left-6 right-6 md:left-12 md:right-auto md:w-80 contact-card p-6 rounded-lg shadow-2xl" data-aos="fade-up">
                         <h4 class="text-brand-green font-bold text-lg mb-2">UK Headquarters</h4>
@@ -297,10 +254,10 @@
                         <span class="text-brand-gold font-bold tracking-widest uppercase text-sm mb-2 block">Get in Touch</span>
                         <h2 class="text-white text-4xl font-serif font-bold mb-6">Let's Discuss</h2>
                         <form @submit.prevent="submitForm" class="space-y-6">
-                            <div><input type="text" class="w-full px-6 py-4 bg-white/5 border border-gray-600 rounded-xl text-white focus:outline-none focus:border-brand-gold focus:bg-white/10 transition-all placeholder-gray-500" placeholder="Your Name"></div>
-                            <div><input type="email" class="w-full px-6 py-4 bg-white/5 border border-gray-600 rounded-xl text-white focus:outline-none focus:border-brand-gold focus:bg-white/10 transition-all placeholder-gray-500" placeholder="Email Address"></div>
-                            <div><textarea rows="4" class="w-full px-6 py-4 bg-white/5 border border-gray-600 rounded-xl text-white focus:outline-none focus:border-brand-gold focus:bg-white/10 transition-all placeholder-gray-500" placeholder="How can we help?"></textarea></div>
-                            <button type="submit" class="w-full bg-brand-gold text-white py-4 rounded-xl font-bold text-lg hover:bg-white hover:text-brand-dark transition-all shadow-xl">Send Message</button>
+                            <div><input type="text" class="w-full px-6 py-4 bg-white/5 border border-gray-600 rounded-xl text-white focus:outline-none focus:border-brand-gold transition-all placeholder-gray-500" placeholder="Your Name"></div>
+                            <div><input type="email" class="w-full px-6 py-4 bg-white/5 border border-gray-600 rounded-xl text-white focus:outline-none focus:border-brand-gold transition-all placeholder-gray-500" placeholder="Email Address"></div>
+                            <div><textarea rows="4" class="w-full px-6 py-4 bg-white/5 border border-gray-600 rounded-xl text-white focus:outline-none focus:border-brand-gold transition-all placeholder-gray-500" placeholder="How can we help?"></textarea></div>
+                            <button type="submit" class="w-full bg-brand-gold text-white py-4 rounded-xl font-bold text-lg hover:bg-white hover:text-brand-dark transition-all">Send Message</button>
                         </form>
                     </div>
                 </div>
@@ -308,17 +265,16 @@
         </section>
         
         <footer class="bg-black text-white py-12 border-t border-gray-900">
-            <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-4 md:mb-0 text-center md:text-left">
-                      <img src="./img/logo.webp" alt="Hara Ceylon" class="h-16 w-auto mx-auto mb-6 opacity-80 grayscale hover:grayscale-0 transition-all">
-                    <h3 class="text-2xl font-serif font-bold text-white mb-2">HARA CEYLON</h3>
+            <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+                <div class="mb-4 md:mb-0">
+                    <img src="./img/logo.webp" alt="Hara Ceylon" class="h-16 w-auto mx-auto md:mx-0 mb-4 opacity-80">
                     <p class="text-gray-500 text-sm">© 2026 Hara Ceylon Ltd. All rights reserved.</p>
                     <p class="text-gray-600 text-xs mt-2">Developed by <a href="https://www.facebook.com/websynic" target="_blank" class="hover:text-brand-gold transition-colors">Websynic Digital Solutions</a></p>
                 </div>
-                <div class="flex space-x-6">
-                    <a href="#" class="text-gray-400 hover:text-brand-gold"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="text-gray-400 hover:text-brand-gold"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="text-gray-400 hover:text-brand-gold"><i class="fab fa-linkedin-in"></i></a>
+                <div class="flex space-x-6 mt-6 md:mt-0">
+                    <a href="#" class="text-gray-400 hover:text-brand-gold transition-colors"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-brand-gold transition-colors"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-brand-gold transition-colors"><i class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
         </footer>
@@ -344,7 +300,6 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         const { createApp } = Vue;
-
         createApp({
             data() {
                 return {
@@ -356,26 +311,13 @@
                     showModal: false,
                     selectedProduct: {},
                     currentHeroIndex: 0,
-                    
-                    // CUSTOM HERO IMAGES
-                    heroImages: [
-                        'img/hero1.webp', 
-                        'img/hero2.webp', 
-                        'img/hero3.webp'
-                    ],
-
-                    navItems: [
-                        { name: 'Home', link: '#home' },
-                        { name: 'About', link: '#about' },
-                        { name: 'Collection', link: '#shop' },
-                    ],
-                    
-                    // UPDATED PRODUCT LIST (All Tea)
+                    heroImages: ['img/hero1.webp', 'img/hero2.webp', 'img/hero3.webp'],
+                    navItems: [{ name: 'Home', link: '#home' }, { name: 'About', link: '#about' }, { name: 'Collection', link: '#shop' }],
                     products: [
-                        { id: 1, category: 'tea', title: 'Royal Ceylon Black', desc: 'Handpicked from the lush highlands.', image: 'img/product1.webp' },
-                        { id: 2, category: 'tea', title: 'Highland Green Tea', desc: 'Vibrant green leaves curated to bring you unmatched freshness.', image: 'img/product2.webp' },
-                        { id: 3, category: 'tea', title: 'Hara Signature Gold', desc: 'A premium golden leaf tea blend.', image: 'img/product3.webp' },
-                        { id: 4, category: 'tea', title: 'Mountain White Tea', desc: 'Delicate white tea from the misty mountains.', image: 'img/product4.webp' }
+                        { id: 1, category: 'tea', title: 'Premium Ceylon Black', desc: 'Bold and full-bodied Ceylon black tea with a smooth, refreshing finish.', image: 'img/Black-tea1.png' },
+                        { id: 2, category: 'tea', title: 'Premium Green Tea', desc: 'Light and refreshing Ceylon green tea with a clean, soothing taste.', image: 'img/Green-tea1.png' },
+                        { id: 3, category: 'coffee', title: 'Arabica Extra Fine Medium Roasted Coffee', desc: 'Rich Arabica coffee with deep roasted notes and a smooth aroma.', image: 'img/Dark-Rosated-Coffee.png' },
+                        { id: 4, category: 'coffee', title: 'Arabica Medium Dark Roasted Coffee', desc: 'Smooth medium-roasted Arabica coffee with refined flavor and aroma.', image: 'img/Medium-Roasted-Coffee.png' }
                     ]
                 }
             },
@@ -393,17 +335,13 @@
                 submitForm() { alert('Thank you. We will contact you shortly.'); },
                 handleScroll() {
                     this.isScrolled = window.scrollY > 50;
-                    let scrollTop = window.scrollY;
-                    let docHeight = document.body.offsetHeight;
-                    let winHeight = window.innerHeight;
-                    let scrollPercent = scrollTop / (docHeight - winHeight);
-                    this.scrollPercentage = Math.min(scrollPercent * 100, 100);
+                    this.scrollPercentage = Math.min((window.scrollY / (document.body.offsetHeight - window.innerHeight)) * 100, 100);
                 }
             },
             mounted() {
                 AOS.init({ once: true, offset: 100, duration: 800 });
                 window.addEventListener('scroll', this.handleScroll);
-                setTimeout(() => { this.loading = false; }, 1500);
+                setTimeout(() => { this.loading = false; }, 1200);
                 setInterval(() => { this.currentHeroIndex = (this.currentHeroIndex + 1) % this.heroImages.length; }, 5000);
             },
             updated() {
