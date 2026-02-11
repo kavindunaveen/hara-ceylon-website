@@ -177,25 +177,36 @@
                 </div>
             </transition>
         </nav>
+<header id="home" class="relative h-screen min-h-[600px] flex items-center justify-center text-center px-4 overflow-hidden bg-black">
+    
+    <transition-group name="slide">
+   <video 
+    v-for="(vid, index) in heroVideos" 
+    :key="vid" 
+    v-show="currentHeroIndex === index" 
+    class="absolute inset-0 w-full h-full object-cover" 
+    autoplay muted loop playsinline
+    preload="auto"            poster="img/hero-bg.webp" >
+    <source :src="vid" type="video/mp4"> </video>
+    </transition-group>
 
-        <header id="home" class="relative h-screen min-h-[600px] flex items-center justify-center text-center px-4 overflow-hidden bg-black">
-            <transition-group name="slide">
-                <div v-for="(img, index) in heroImages" :key="img" v-show="currentHeroIndex === index" class="absolute inset-0 w-full h-full bg-cover bg-center transition-transform duration-[10000ms] ease-linear transform scale-110" :style="{ backgroundImage: `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.5)), url(${img})` }"></div>
-            </transition-group>
-            <div class="relative z-10 max-w-5xl mx-auto" data-aos="zoom-in" data-aos-duration="1500">
-                <div class="inline-block mb-4 px-4 py-1 border border-brand-gold/50 rounded-full glass">
-                    <span class="text-brand-gold font-serif italic text-sm md:text-lg">Discover the Pure Essence of Sri Lanka</span>
-                </div>
-                <h1 class="text-5xl md:text-7xl lg:text-8xl font-serif font-bold text-white mb-6 leading-tight drop-shadow-xl">Pure Ceylon <br> <span class="text-brand-gold">Tea & Coffee</span></h1>
-                <div class="flex flex-col sm:flex-row justify-center gap-6 mt-10">
-                    <button @click="scrollTo('#shop')" class="px-8 py-4 bg-brand-green text-white font-bold rounded-full shadow-2xl transition-transform hover:scale-105 hover:bg-green-800">Explore Collection</button>
-                    <button @click="scrollTo('#about')" class="px-8 py-4 border border-white/30 text-white font-bold rounded-full hover:bg-white hover:text-brand-dark transition-all">Our Story</button>
-                </div>
-            </div>
-            <div class="absolute bottom-10 flex space-x-3 z-20">
-                <button v-for="(img, index) in heroImages" :key="index" @click="currentHeroIndex = index" :class="currentHeroIndex === index ? 'bg-brand-gold w-8' : 'bg-white/50 w-2 hover:bg-white'" class="h-2 rounded-full transition-all duration-300"></button>
-            </div>
-        </header>
+    <div class="absolute inset-0 bg-black/40 z-0"></div>
+
+    <div class="relative z-10 max-w-5xl mx-auto" data-aos="zoom-in" data-aos-duration="1500">
+        <div class="inline-block mb-4 px-4 py-1 border border-brand-gold/50 rounded-full glass">
+            <span class="text-brand-gold font-serif italic text-sm md:text-lg">Discover the Pure Essence of Sri Lanka</span>
+        </div>
+        <h1 class="text-5xl md:text-7xl lg:text-8xl font-serif font-bold text-white mb-6 leading-tight drop-shadow-xl">Pure Ceylon <br> <span class="text-brand-gold">Tea & Coffee</span></h1>
+        <div class="flex flex-col sm:flex-row justify-center gap-6 mt-10">
+            <button @click="scrollTo('#shop')" class="px-8 py-4 bg-brand-green text-white font-bold rounded-full shadow-2xl transition-transform hover:scale-105 hover:bg-green-800">Explore Collection</button>
+            <button @click="scrollTo('#about')" class="px-8 py-4 border border-white/30 text-white font-bold rounded-full hover:bg-white hover:text-brand-dark transition-all">Our Story</button>
+        </div>
+    </div>
+
+    <div class="absolute bottom-10 flex space-x-3 z-20">
+        <button v-for="(vid, index) in heroVideos" :key="index" @click="currentHeroIndex = index" :class="currentHeroIndex === index ? 'bg-brand-gold w-8' : 'bg-white/50 w-2 hover:bg-white'" class="h-2 rounded-full transition-all duration-300"></button>
+    </div>
+</header>
 
         <section id="about" class="py-24 bg-white relative overflow-hidden">
             <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -412,7 +423,7 @@
                     showModal: false,
                     selectedProduct: {},
                     currentHeroIndex: 0,
-                    heroImages: ['img/hero1.webp', 'img/hero2.webp', 'img/hero3.webp'],
+                    heroVideos: ['img/video2.mp4', 'img/video1.mp4'],
                     navItems: [{ name: 'Home', link: '#home' }, { name: 'About', link: '#about' }, { name: 'Collection', link: '#shop' }],
                    products: [
                         { id: 1, category: 'tea', title: 'Premium Ceylon Black', desc: 'Bold and full-bodied Ceylon black tea with a smooth, refreshing finish.', image: 'img/PREMIUM-BLACK-TEA.png' },
@@ -443,17 +454,16 @@
                     this.scrollPercentage = Math.min(scrollPercent * 100, 100);
                 }
             },
-            mounted() {
-                AOS.init({ once: true, offset: 100, duration: 800 });
-                window.addEventListener('scroll', this.handleScroll);
-                setTimeout(() => { this.loading = false; }, 1500);
-                setInterval(() => { this.currentHeroIndex = (this.currentHeroIndex + 1) % this.heroImages.length; }, 5000);
-            },
-            updated() {
-                if (typeof VanillaTilt !== 'undefined') {
-                    VanillaTilt.init(document.querySelectorAll(".tilt-card"), { max: 15, speed: 400, glare: true, "max-glare": 0.3 });
-                }
-            }
+       mounted() {
+    AOS.init({ once: true, offset: 100, duration: 800 });
+    window.addEventListener('scroll', this.handleScroll);
+    setTimeout(() => { this.loading = false; }, 1500);
+
+    // UPDATE THIS LINE (Changed heroImages to heroVideos and increased time to 8000ms)
+    setInterval(() => { 
+        this.currentHeroIndex = (this.currentHeroIndex + 1) % this.heroVideos.length; 
+    }, 8000); 
+},
         }).mount('#app');
     </script>
 </body>
